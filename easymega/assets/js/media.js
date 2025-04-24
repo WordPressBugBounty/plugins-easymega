@@ -111,14 +111,14 @@ jQuery( document ).ready( function( $ ){
     });
 
 
-    $document.on( 'click', '.megamenu-wp-media .select-media, .megamenu-wp-media .change-media', function () {
-        var w = $( this ).closest( '.megamenu-wp-media' );
+    $document.on( 'click', '.easymega-wp-media .select-media, .easymega-wp-media .change-media', function () {
+        var w = $( this ).closest( '.easymega-wp-media' );
         MegaMenuWPMedia.setPreview( w );
         MegaMenuWPMediaImage.open();
     } );
 
-    $document.on( 'click', '.megamenu-wp-media .remove-media', function () {
-        var w = $( this ).closest( '.megamenu-wp-media' );
+    $document.on( 'click', '.easymega-wp-media .remove-media', function () {
+        var w = $( this ).closest( '.easymega-wp-media' );
         MegaMenuWPMedia.setPreview( w );
         MegaMenuWPMedia.remove( w );
     } );

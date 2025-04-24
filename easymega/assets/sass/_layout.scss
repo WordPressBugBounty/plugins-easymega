@@ -1,12 +1,14 @@
+@use "mixins";
+
 // main: style.scss
 
 .mega-content * {
     box-sizing: border-box;
 }
 .mega-container .mega-row{
-    padding: $gutter;
-    @include for-mobile {
-        padding: calc( $gutter/2 );
+    padding: mixins.$gutter;
+    @include mixins.for-mobile {
+        padding: calc( mixins.$gutter/2 );
         .mega-col {
             margin-bottom: 15px;
             &:last-of-type {
@@ -18,13 +20,13 @@
 }
 .mega-row {
     &::after{
-        @include clearfix();
+        @include mixins.clearfix();
     }
 }
-#megamenu-wp-page {
-    @include for-desktop() {
-        .megamenu-wp .mega-item:hover .mega-content,
-        .megamenu-wp .mega-item.mega-hover .mega-content {
+#easymega-wp-page {
+    @include mixins.for-desktop() {
+        .easymega-wp .mega-item:hover .mega-content,
+        .easymega-wp .mega-item.mega-hover .mega-content {
             width: 100%;
             max-width: 99999px;
             opacity: 1;
@@ -66,11 +68,11 @@
 
             .mega-row {
                 &:after {
-                    @include clearfix();
+                    @include mixins.clearfix();
                 }
                 .mega-col {
                     float: left;
-                    padding-right: $gutter;
+                    padding-right: mixins.$gutter;
                     &:last-child {
                         padding-right: 0px;
                     }
@@ -86,7 +88,7 @@
     }
     .mega-col {
         .mega-widget {
-            margin-top: $gutter;
+            margin-top: mixins.$gutter;
             &:first-child {
                 margin-top: 0px;
             }
@@ -95,8 +97,8 @@
     }
 }
 
-#megamenu-wp-page {
-    @include for-mobile() {
+#easymega-wp-page {
+    @include mixins.for-mobile() {
         .mega-item {
             .mega-inner {
                 ul, ol {

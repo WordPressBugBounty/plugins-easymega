@@ -1,6 +1,9 @@
 <?php
+if ( !
+defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
 
-class MegaMenu_WP_Menu {
+
+class EasyMega_Menu {
 	public $special_themes;
 
 	function __construct() {
@@ -21,7 +24,7 @@ class MegaMenu_WP_Menu {
 			$classes[] = 'mega-item';
 			$current_theme = get_option( 'stylesheet' );
 			if ( in_array( $current_theme, $this->special_themes ) ) {
-				$classes[] = 'megamenu-dropdown';
+				$classes[] = 'easymega-dropdown';
 			} else {
 				$classes[] = 'dropdown';
 			}
@@ -83,14 +86,14 @@ class MegaMenu_WP_Menu {
 
 		// Previewing menu
 		if ( isset( $menu->term_id ) ) {
-			if ( ! MegaMenu_WP::is_mega_nav_active( $menu->term_id ) ) {
+			if ( ! EasyMega::is_mega_nav_active( $menu->term_id ) ) {
 				return null;
 			}
 		} else {
 			return null;
 		}
 
-		$args->menu_class = 'megamenu-wp ' . $args->menu_class;
+		$args->menu_class = 'easymega-wp ' . $args->menu_class;
 
 		/*
 		 * If no menu was found:
@@ -169,7 +172,7 @@ class MegaMenu_WP_Menu {
 		$wrap_id = $args->menu_id;
 		$menu_id_slugs[] = $args->menu_id;
 
-		$wrap_class = 'megamenu-wp-wrapper ' . $args->menu_class ? $args->menu_class : '';
+		$wrap_class = 'easymega-wp-wrapper ' . $args->menu_class ? $args->menu_class : '';
 
 		/**
 		 * Filters the HTML list content for navigation menus.
@@ -250,7 +253,7 @@ class MegaMenu_WP_Menu {
 		}
 
 		if ( isset( $args->menu ) && is_object( $args->menu ) ) {
-			if ( ! MegaMenu_WP::is_mega_nav_active( $args->menu->term_id ) ) {
+			if ( ! EasyMega::is_mega_nav_active( $args->menu->term_id ) ) {
 				return $item_output;
 			}
 		}
@@ -259,7 +262,7 @@ class MegaMenu_WP_Menu {
 			return $item_output;
 		}
 
-		$mega = new MegaMenu_WP_Menu_Item( $item );
+		$mega = new EasyMega_Menu_Item( $item );
 		$mega_content = $mega->render();
 
 		if ( ! $mega_content ) {
@@ -306,7 +309,7 @@ class MegaMenu_WP_Menu {
 
 		/** This filter is documented in wp-includes/post-template.php */
 		$title = apply_filters( 'the_title', $item->title, $item->ID );
-		$title = apply_filters( 'megamenu_nav_item_title', $item->title, $item->ID );
+		$title = apply_filters( 'easymega_nav_item_title', $item->title, $item->ID );
 
 		/**
 		 * Filters a menu item's title.
@@ -392,4 +395,4 @@ class MegaMenu_WP_Menu {
 }
 
 
-new MegaMenu_WP_Menu();
+new EasyMega_Menu();

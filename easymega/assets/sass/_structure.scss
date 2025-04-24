@@ -1,8 +1,10 @@
+@use "mixins";
+
 // main: style.scss
-#megamenu-wp-page {
+#easymega-wp-page {
     overflow-x: hidden;
 
-    .megamenu-wp {
+    .easymega-wp {
         position: relative;
         &::after {
             //@include clearfix();
@@ -25,7 +27,7 @@
             }
             .widget {
                 text-align: left;
-                color: $text;
+                color: mixins.$text;
                 ul {
                     li {
                         &:hover {
@@ -36,10 +38,10 @@
             }
             .rc-hide_on_mobile {
                 .column-heading {
-                    @include for-desktop(){
+                    @include mixins.for-desktop(){
                         display: none;
                     };
-                    @include for-mobile(){
+                    @include mixins.for-mobile(){
                         display: block;
                     };
                 }
@@ -72,15 +74,15 @@
                     border: 0;
                 }
 
-                @include for-desktop() {
-                    color: $text;
+                @include mixins.for-desktop() {
+                    color: mixins.$text;
                     line-height: 1.6;
                     /* Reset Items inside CSS*/
 
                     a {
                         display: inline-block;
                         background: none;
-                        color: $text;
+                        color: mixins.$text;
                         white-space: normal;
                         line-height: inherit;
                         position: relative;
@@ -108,7 +110,7 @@
                         opacity: 1;
 
                         ul {
-                            padding-left: $gutter*2;
+                            padding-left: mixins.$gutter*2;
                             left: auto;
                         }
                         li {
@@ -123,11 +125,11 @@
                                 width: auto;
                             }
                             &:hover {
-                                color: $text;
+                                color: mixins.$text;
                                 a {
-                                    color: $text;
+                                    color: mixins.$text;
                                     &:hover {
-                                        color: $text;
+                                        color: mixins.$text;
                                     }
                                 }
                             }
@@ -252,7 +254,7 @@
 
                 /* Mega tab posts */
                 .mega-tab-post-cont {
-                    @include for-desktop(){
+                    @include mixins.for-desktop(){
                         position: relative;
                         -webkit-flex: 1;
                         flex: 1;
@@ -276,14 +278,14 @@
                             //z-index: 26;
                         }
                     }
-                    @include for-mobile(){
+                    @include mixins.for-mobile(){
                         display: none;
                     }
 
                 }
 
                 // Start mega tab post
-                @include for-desktop() {
+                @include mixins.for-desktop() {
                     .mega-tab-posts {
                         background: #fff;
                         display: flex;
@@ -306,7 +308,7 @@
                         &.tabs-left {
                             .mega-tab-post-nav {
                                 background: #f7f7f7;
-                                border-right: 1px solid $border;
+                                border-right: 1px solid mixins.$border;
                                 .li {
                                     padding-left: 0px;
                                     border-right: 1px solid transparent;
@@ -327,7 +329,7 @@
                                         border-right-color: #FFFFFF;
                                         a {
                                             //box-shadow: -2px 1px 5px #dcdee3;
-                                            border-color: $border transparent $border $border;
+                                            border-color: mixins.$border transparent mixins.$border mixins.$border;
                                             background: #FFF;
 
                                         }
@@ -339,7 +341,7 @@
                             .mega-tab-post-nav {
                                 order: 5;
                                 background: #f7f7f7;
-                                border-left: 1px solid $border;
+                                border-left: 1px solid mixins.$border;
                                 .li {
                                     padding-right: 0px;
                                     border-left: 1px solid transparent;
@@ -373,7 +375,7 @@
                                     &:hover, &.active {
                                         background: #fff;
                                         a {
-                                            border-color: $border $border $border transparent;
+                                            border-color: mixins.$border mixins.$border mixins.$border transparent;
                                             background: inherit;
 
                                         }
@@ -381,7 +383,7 @@
 
                                     a {
                                         text-align: right;
-                                        @include for-mobile() {
+                                        @include mixins.for-mobile() {
                                             text-align: left;
                                         }
                                     }
@@ -398,7 +400,7 @@
                         .post {
                             box-shadow: none;
                         }
-                        .megamenu-post-thumbnail {
+                        .easymega-post-thumbnail {
                             position: relative;
                             overflow: hidden;
                             display: block;
@@ -447,19 +449,19 @@
                             background: none;
                             padding-top: 28px;
                            // min-width: 150px;
-                            @include for-mobile() {
+                            @include mixins.for-mobile() {
                                 padding-top: 0px;
                             }
                             &:before, &:after {
                                 background: none;
                             }
-                            @include for-desktop() {
+                            @include mixins.for-desktop() {
                                 width: 250px;
                                 max-width: 250px;
                                 min-width: 250px;
                             }
                             &:after {
-                                @include clearfix();
+                                @include mixins.clearfix();
                             }
 
                             //border-right: 1px solid $border;
@@ -477,11 +479,11 @@
                                 //z-index: 20;
                                 margin-top: -1px;
                                 .arrow {
-                                    @include for-mobile {
+                                    @include mixins.for-mobile {
                                         display: none;
                                     }
 
-                                    @include for-desktop() {
+                                    @include mixins.for-desktop() {
                                         display: flex;
                                         justify-content: center;
                                         align-items: center;
@@ -505,7 +507,7 @@
                                             content: " ";
                                             display: block;
                                             position: relative;
-                                            background: $text;
+                                            background: mixins.$text;
                                         }
                                         &::before {
                                             transform: rotate(45deg);
@@ -533,7 +535,7 @@
                             padding: 14px;
                             display: none;
 
-                            @include for-desktop {
+                            @include mixins.for-desktop {
                                 overflow: hidden;
                                 div {
                                     transition: all .7s ease;
@@ -547,7 +549,7 @@
                                     }
                                 }
                             }
-                            transition: all $animation-delay ease;
+                            transition: all mixins.$animation-delay ease;
                             &.active {
                                 display: block;
                             }
@@ -610,11 +612,11 @@
 
                         .nav-tab-paging {
                             clear: both;
-                            padding: 0px calc( $gutter/2 ) 0px;
+                            padding: 0px calc( mixins.$gutter/2 ) 0px;
                             text-align: initial;
                             margin-bottom: 5px;
                             &:after {
-                                @include clearfix();
+                                @include mixins.clearfix();
                             }
                             a {
                                 &.disable {
@@ -622,7 +624,7 @@
                                     opacity: 0.4;
                                     cursor: default;
                                 }
-                                border: 1px solid $border;
+                                border: 1px solid mixins.$border;
                                 padding: 12px 10px;
                                 width: 28px;
                                 height: 28px;
@@ -639,7 +641,7 @@
                                     content: " ";
                                     display: block;
                                     position: relative;
-                                    background: $text;
+                                    background: mixins.$text;
                                     margin: 0px;
                                 }
                                 &::before {
@@ -668,7 +670,7 @@
                     }
                 } // End for desktop
 
-                @include for-mobile(){
+                @include mixins.for-mobile(){
                     .mega-tab-post-nav {
                         a {
                             display: block;
@@ -683,7 +685,7 @@
 
 
             } // end mega content
-            @include for-desktop() {
+            @include mixins.for-desktop() {
                 &.mega-full {
                     .mega-content {
                         overflow: initial !important;
@@ -727,7 +729,7 @@
 
             &.mega-boxed {
                 &.mega-hover {
-                    @include for-desktop {
+                    @include mixins.for-desktop {
                         .mega-content-inner {
                            // border: 1px solid $border;
                         }
@@ -735,12 +737,12 @@
                 }
             }
 
-            @include for-desktop(){
+            @include mixins.for-desktop(){
                 .mega-content-inner {
                     background: #FFF;
                     display: block;
                     &:after {
-                        @include clearfix();
+                        @include mixins.clearfix();
                     }
                 }
                 // For hover action

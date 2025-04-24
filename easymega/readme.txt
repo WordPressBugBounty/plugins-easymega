@@ -1,9 +1,9 @@
-== Mega Menu Plugin for WordPress ===
+== EasyMega ===
 Contributors: famethemes
-Tags: megamenu, mega menu, menu content, menu builder, mega builder, element, menu builder, responsive, visual, widget
+Tags: megamenu, mega menu, menu builder, mega builder, menu builder
 Requires at least:  4.7.3
-Tested up to: 6.5.4
-Stable tag: trunk
+Tested up to: 6.8
+Stable tag: 1.1.8
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -13,7 +13,7 @@ A Mega Menu plugin that helps you create mega menu easily, beautifully.
 
 A Mega Menu plugin that helps you create mega menu easily, beautifully. Builds in customizer system.
 
-###Features:
+### Features:
 
 * Builds with customizer system.
 * Live view.
@@ -55,6 +55,12 @@ If you want more documentation about EasyMega you can find it [here](http://docs
 
 
 == Changelog ==
+= 1.1.3 =
+* FIXED: Plugin review issues
+
+= 1.1.1 =
+* FIXED: Tested up to WP 6.8
+
 = 1.1.1 =
 * FIXED: Tested up to WP 6.5.4
 

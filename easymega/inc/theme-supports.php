@@ -1,31 +1,32 @@
 <?php
+if (! defined('ABSPATH')) exit; // Exit if accessed directly
 
-
-function megamenuwp_theme_setup_support( $result, $feature = false, $args = false ){
+function easymega_theme_setup_support($result, $feature = false, $args = false)
+{
     $current_theme = wp_get_theme();
     $slug = $current_theme->get_template();
     $options = false;
 
     $themes = array(
         'onepress' => array(
-             'custom_css' => '#megamenu-wp-page .megamenu-wp.onepress-menu.onepress-menu-mobile{ position: absolute; };'
+            'custom_css' => '#easymega-wp-page .easymega-wp.onepress-menu.onepress-menu-mobile{ position: absolute; };'
         ),
         'generatepress' => array(
             'mobile_mod'        => 768,
-            'custom_css' => '.megamenu-wp-mobile #megamenu-wp-page .megamenu-wp .mega-item .mega-content .mega-tab-post-nav .li { padding: 0px; } .megamenu-wp-mobile #megamenu-wp-page .megamenu-wp .mega-item .mega-content .mega-menu-item a { padding-left: 8px; }'
+            'custom_css' => '.easymega-wp-mobile #easymega-wp-page .easymega-wp .mega-item .mega-content .mega-tab-post-nav .li { padding: 0px; } .easymega-wp-mobile #easymega-wp-page .easymega-wp .mega-item .mega-content .mega-menu-item a { padding-left: 8px; }'
         ),
         'astra' => array(
             'mobile_mod'        => 920,
             'parent_level'      => 3,
-            'custom_css' => '.megamenu-wp-desktop #megamenu-wp-page .mega-content.sub-menu{ padding-top: 15px; } .megamenu-wp-mobile #megamenu-wp-page .megamenu-wp .mega-item .mega-content .mega-tab-post-nav .li {padding: 0px;}'
+            'custom_css' => '.easymega-wp-desktop #easymega-wp-page .mega-content.sub-menu{ padding-top: 15px; } .easymega-wp-mobile #easymega-wp-page .easymega-wp .mega-item .mega-content .mega-tab-post-nav .li {padding: 0px;}'
         ),
         'oceanwp' => array(
             'mobile_mod'        => 959,
             'parent_level'      => 3,
-            'custom_css' => '.megamenu-wp-desktop #megamenu-wp-page .mega-content .mega-inner{ border-top: 3px solid #13aff0; } .sidr-class-mega-tab-post-cont { display: none; } '
+            'custom_css' => '.easymega-wp-desktop #easymega-wp-page .mega-content .mega-inner{ border-top: 3px solid #13aff0; } .sidr-class-mega-tab-post-cont { display: none; } '
         ),
         'wellness' => array(
-             'custom_css' => '.nav-menu .menu-item .mega-content { display: none; } .nav-menu .menu-item:hover .mega-content { display: block; } '
+            'custom_css' => '.nav-menu .menu-item .mega-content { display: none; } .nav-menu .menu-item:hover .mega-content { display: block; } '
         ),
         'wellness-pro' => 'wellness',
         'screenr' => array(
@@ -113,24 +114,24 @@ function megamenuwp_theme_setup_support( $result, $feature = false, $args = fals
 
     );
 
-    if ( isset( $themes[ $slug ] ) ) {
-        $key = $themes[ $slug ];
-        if ( is_string( $key ) ) {
-            if ( isset( $themes[ $key ] ) ) {
-                $options = $themes[ $key ];
+    if (isset($themes[$slug])) {
+        $key = $themes[$slug];
+        if (is_string($key)) {
+            if (isset($themes[$key])) {
+                $options = $themes[$key];
             }
         } else {
             $options = $key;
         }
     }
 
-    if ( $options ) {
-        if ( is_array( $result ) && ! $feature ) {
-            return  array_merge( $result, $options );
-        } elseif ( $feature ) {
+    if ($options) {
+        if (is_array($result) && ! $feature) {
+            return  array_merge($result, $options);
+        } elseif ($feature) {
 
-            if ( isset( $options[ $feature ] )  ) {
-                return $options[ $feature ];
+            if (isset($options[$feature])) {
+                return $options[$feature];
             }
             return $result;
         }
@@ -139,20 +140,20 @@ function megamenuwp_theme_setup_support( $result, $feature = false, $args = fals
     return $result;
 }
 
-add_filter( 'megamenu_wp_get_theme_support', 'megamenuwp_theme_setup_support', 10, 3 );
+add_filter('easymega_wp_get_theme_support', 'easymega_theme_setup_support', 10, 3);
 
 
-if ( get_template() == 'oceanwp' ) {
+if (get_template() == 'oceanwp') {
 
-    function megamenu_ocean_head_css($code)
+    function easymega_ocean_head_css($code)
     {
-        $primary_color = get_theme_mod( 'ocean_primary_color', '#13aff0' );
-        $primary_color = sanitize_hex_color( $primary_color );
-        $code  = '.megamenu-wp-desktop #megamenu-wp-page .mega-content .mega-inner { border-top-color: '.$primary_color.';}';
+        $primary_color = get_theme_mod('ocean_primary_color', '#13aff0');
+        $primary_color = sanitize_hex_color($primary_color);
+        $code  = '.easymega-wp-desktop #easymega-wp-page .mega-content .mega-inner { border-top-color: ' . $primary_color . ';}';
         return $code;
     }
 
-    function megamenu_ocean_nav_item_title($title)
+    function easymega_ocean_nav_item_title($title)
     {
         if (true == get_theme_mod('ocean_menu_arrow_down', true)) {
             $title .= ' <span class="nav-arrow fa fa-angle-down"></span>';
@@ -160,7 +161,6 @@ if ( get_template() == 'oceanwp' ) {
         return $title;
     }
 
-    add_filter('ocean_head_css', 'megamenu_ocean_head_css');
-    add_filter('megamenu_nav_item_title', 'megamenu_ocean_nav_item_title');
+    add_filter('ocean_head_css', 'easymega_ocean_head_css');
+    add_filter('easymega_nav_item_title', 'easymega_ocean_nav_item_title');
 }
-

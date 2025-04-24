@@ -1,11 +1,11 @@
-.settings_page_megamenu-wp #wpcontent {
+.settings_page_easymega-wp #wpcontent {
     padding-left: 0;
 }
-.settings_page_megamenu-wp #wpcontent .wrap {
+.settings_page_easymega-wp #wpcontent .wrap {
     margin: 10px 20px 0 20px;
 }
 @media screen and (max-width: 782px) {
-    .settings_page_megamenu-wp #wpcontent .wrap {
+    .settings_page_easymega-wp #wpcontent .wrap {
         margin-right: 12px;
         margin-left: 12px;
     }
