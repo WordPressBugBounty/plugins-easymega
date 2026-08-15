@@ -1,4 +1,8 @@
 == Changelog ==
+= 1.1.9 =
+* FIXED: Tested up to WP 7.1
+* FIXED: Declare jQuery UI sortable/draggable as explicit script dependencies for the Customizer mega menu builder (WP 7.1 ships jQuery UI 1.14.2).
+
 = 1.0.9 =
 * FIXED: Config option not showing.
 

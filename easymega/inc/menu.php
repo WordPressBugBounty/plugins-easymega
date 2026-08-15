@@ -2,7 +2,6 @@
 if ( !
 defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
 
-
 class EasyMega_Menu {
 	public $special_themes;
 
@@ -241,7 +240,7 @@ class EasyMega_Menu {
 	}
 
 	function setup_item_css( $args = array(), $settings = array() ) {
-	
+		
 			return false;
 		
 	}

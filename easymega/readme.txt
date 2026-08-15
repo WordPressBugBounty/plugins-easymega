@@ -2,8 +2,8 @@
 Contributors: famethemes
 Tags: megamenu, mega menu, menu builder, mega builder, menu builder
 Requires at least:  4.7.3
-Tested up to: 6.8
-Stable tag: 1.1.8
+Tested up to: 7.1
+Stable tag: 1.1.9
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -55,6 +55,10 @@ If you want more documentation about EasyMega you can find it [here](http://docs
 
 
 == Changelog ==
+= 1.1.9 =
+* FIXED: Tested up to WP 7.1
+* FIXED: Declare jQuery UI sortable/draggable as explicit script dependencies for the Customizer mega menu builder (WP 7.1 ships jQuery UI 1.14.2).
+
 = 1.1.3 =
 * FIXED: Plugin review issues
 

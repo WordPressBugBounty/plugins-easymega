@@ -2,7 +2,6 @@
 
 if (! defined('ABSPATH')) exit; // Exit if accessed directly
 
-
 class EasyMega_Menu_Item
 {
 	public $item;
@@ -377,7 +376,7 @@ class EasyMega_Menu_Item
 
 		$args = wp_array_slice_assoc($data, array_keys($post_args));
 
-	
+		
 			if ($args['post_type'] != 'post') {
 				$args['post_type'] = 'post';
 			}

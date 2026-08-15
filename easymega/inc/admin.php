@@ -1,7 +1,6 @@
 <?php
 if (! defined('ABSPATH')) exit; // Exit if accessed directly
 
-
 class EasyMega_Admin
 {
 	function __construct()
@@ -10,7 +9,7 @@ class EasyMega_Admin
 		add_action('customize_controls_print_footer_scripts', array($this, 'item_settings_tpl'), 65);
 		add_action('customize_controls_enqueue_scripts', array($this, 'customize_enqueue'));
 		add_filter('customize_save_response', array($this, 'amend_customize_save_response'), 999, 2);
-	
+		
 		add_action('wp_ajax_mega_menu_load_setting', array($this, 'ajax_load_item_mega'));
 		// Load item data when init
 		add_action('wp_ajax_mega_menu_load_item_data', array($this, 'ajax_load_item_data'));
@@ -23,7 +22,7 @@ class EasyMega_Admin
 		//$post_type = $_REQUEST['post_type'];
 		$tax = sanitize_text_field(wp_unslash($_REQUEST['tax'])); // phpcs:ignore WordPress.Security.NonceVerification.Recommended, WordPress.Security.ValidatedSanitizedInput.InputNotValidated	
 
-	
+		
 
 			if (! in_array($tax, array('category', 'post_tag', 'post_format'))) {
 				wp_send_json_error();
@@ -334,13 +333,15 @@ class EasyMega_Admin
 	{
 		wp_enqueue_script('wp-color-picker');
 		wp_enqueue_style('wp-color-picker');
-		wp_enqueue_style('jquery-ui-draggable');
 		wp_enqueue_media();
 
 		$js_file = EASYMEGA_PATH . 'assets/js/easymega-wp-customizer.js';
 		if (file_exists($js_file)) {
 			$v = filemtime($js_file);
-			wp_enqueue_script('easymega-wp-admin', EASYMEGA_URL . 'assets/js/easymega-wp-customizer.js', array('jquery', 'customize-controls'), $v, true);
+			// The customizer script uses jQuery UI sortable and draggable, so declare
+			// them as explicit dependencies rather than relying on other components to
+			// happen to load them (jQuery UI 1.14.2 in WP 7.1).
+			wp_enqueue_script('easymega-wp-admin', EASYMEGA_URL . 'assets/js/easymega-wp-customizer.js', array('jquery', 'jquery-ui-core', 'jquery-ui-sortable', 'jquery-ui-draggable', 'customize-controls'), $v, true);
 		}
 
 		$js_file = EASYMEGA_PATH . 'assets/js/media.js';
@@ -401,7 +402,7 @@ class EasyMega_Admin
 			'_nonce' => wp_create_nonce('easymega_nonce'),
 		);
 
-	
+		
 			$args['limit_post_type_msg'] = sprintf(
 				/* translators: 1: Link to the PRO version of the plugin. */
 				__('Please upgrade to <a target="_blank" href="%s">PRO version</a> to unlock this feature.', 'easymega'),
@@ -450,7 +451,7 @@ class EasyMega_Admin
 				<div class="add-actions action-footer">
 					<a href="#" class="add-menu"><?php esc_html_e('Add menu', 'easymega'); ?></a>
 					<a href="#" class="add-item"><?php
-																			
+																				
 																					esc_html_e('Add widget (Pro)', 'easymega');
 																				
 																				?></a>
@@ -591,7 +592,7 @@ class EasyMega_Admin
 											<div class="post_type field-setting">
 												<?php
 												$class = 'post_type';
-											
+												
 												?>
 												<select id="post_type" class="<?php echo esc_attr($class); ?>" name="post_type">
 													<#
@@ -600,7 +601,7 @@ class EasyMega_Admin
 														}
 														#>
 														<?php
-													
+														
 																?>
 																	<# _.each( megamenuSettings.posts, function( post ) { #>
 																		<option <# if ( 'post' !=post.name ) { #> disabled="disabled" <# } #>
@@ -838,7 +839,7 @@ class EasyMega_Admin
 
 							<div class="easymega-content tab-style ">
 								<form class="mega-form mega-style-form">
-									<?php
+									<?php 
 									?>
 										<div class="easymega-wp-msg">
 											<?php printf(

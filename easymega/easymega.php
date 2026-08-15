@@ -5,7 +5,7 @@ Plugin URI: https://www.famethemes.com
 Description: The EasyMega plugin helps you create mega menu easily, beautifully in any themes. Using the lightweight live Customizer system.
 Author: famethemes
 Author URI: https://www.famethemes.com
-Version: 1.1.8
+Version: 1.1.9
 Text Domain: easymega
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
@@ -176,7 +176,7 @@ if (! class_exists('EasyMega')) {
 				EASYMEGA_PATH . 'templates/', // Plugin
 			);
 
-		
+			
 
 			foreach ($template_folders as $folder) {
 				$file = $folder . $template;

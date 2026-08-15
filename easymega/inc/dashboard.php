@@ -139,7 +139,7 @@ class Megamenu_Dashboard
 
                 <?php
 
-               
+                
 
                     $string = 'Builds with customizer system
 Live view
